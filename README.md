@@ -51,3 +51,276 @@ Dependencies
 * Download Putty. then run code in using the linux comment (cd python3 "Full file path"/main.py)
 
 As a result Solar output is send from your mail to the required user.
+
+
+---------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAYMENT INTEGRITY ESTIMATION TOOL</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PAYMENT INTEGRITY ESTIMATION TOOL</h1>
+        <div class="input-section">
+            <label for="total-membership">Total Membership (Medical):</label>
+            <input type="number" id="total-membership" placeholder="Enter value" />
+
+            <label for="annual-spend">Annual Spend on Medical Care:</label>
+            <input type="number" id="annual-spend" placeholder="Enter value" />
+        </div>
+
+        <div class="distribution-section">
+            <h3>Membership Distribution by LOB</h3>
+            <label for="mcr">MCR (%):</label>
+            <input type="number" id="mcr" placeholder="Enter percentage" />
+
+            <label for="mcd">MCD (%):</label>
+            <input type="number" id="mcd" placeholder="Enter percentage" />
+
+            <label for="comm">COMM (%):</label>
+            <input type="number" id="comm" placeholder="Enter percentage" />
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>BCBS Arizona</th>
+                    <th>Audit Program</th>
+                    <th>Pass Position</th>
+                    <th>Estimated Annual Savings to Client ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Generate 12 rows dynamically -->
+                <script>
+                    for (let i = 1; i <= 12; i++) {
+                        document.write(`
+                            <tr>
+                                <td>Audit Program ${i}</td>
+                                <td>
+                                    <select>
+                                        <option value="DRG">DRG</option>
+                                        <option value="IBR">IBR</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select>
+                                        <option value="1st pass">1st pass</option>
+                                        <option value="2nd pass">2nd pass</option>
+                                        <option value="3rd pass">3rd pass</option>
+                                    </select>
+                                </td>
+                                <td><input type="number" placeholder="Output value" readonly /></td>
+                            </tr>
+                        `);
+                    }
+                </script>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"><strong>Total Estimated Savings ($):</strong></td>
+                    <td><input type="number" readonly value="0" /></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
+-------------------------
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(to bottom, #edf2f7, #d4e9f8);
+    color: #444;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: linear-gradient(135deg, #ffffff, #f0f8ff);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 2px solid #9ec2e6;
+}
+
+h1 {
+    text-align: center;
+    color: #003a8c;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    color: #003a8c;
+    margin-top: 15px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 2px solid #9ec2e6;
+    border-radius: 10px;
+    font-size: 16px;
+    background: #ffffff;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #003a8c;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 58, 140, 0.6);
+}
+
+.input-section, .distribution-section {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #f6fbff;
+    border: 1px solid #9ec2e6;
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+
+.input-section:hover, .distribution-section:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 15px;
+}
+
+table th, table td {
+    padding: 18px;
+    text-align: left;
+    border-bottom: 1px solid #dce7f3;
+}
+
+table th {
+    background: #003a8c;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+table tbody tr:nth-child(odd) {
+    background: #f9fcff;
+}
+
+table tbody tr:nth-child(even) {
+    background: #edf5ff;
+}
+
+table tbody tr:hover {
+    background: #d6ebff;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+tfoot td {
+    font-weight: bold;
+    background: #9ec2e6;
+    color: #ffffff;
+    border-top: 2px solid #003a8c;
+    text-align: right;
+    font-size: 15px;
+}
+
+tfoot input {
+    border: none;
+    background-color: #0066cc; 
+    color: #ffffff; 
+    font-size: 14px;
+    width: 100px; 
+    padding: 8px; 
+    border-radius: 6px; 
+    text-align: center; 
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.3); 
+    transition: all 0.3s ease-in-out; 
+    margin: 0 auto; 
+    display: block; 
+}
+
+tfoot input:focus {
+    background-color: #004d99; 
+    box-shadow: 0 0 15px rgba(0, 51, 102, 0.6); 
+    outline: none;
+}
+
+
+button {
+    padding: 14px 28px;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    color: #ffffff;
+    background: linear-gradient(90deg, #003a8c, #0064d9);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #002b6d, #0054b3);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    table th, table td {
+        font-size: 13px;
+        padding: 14px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+}
+
+table tbody tr td input[type="number"] {
+    width: 400px; 
+    padding: 5px; 
+    font-size: 14px; 
+    text-align: center; 
+    border: 1px solid #c0c0c0; 
+    border-radius: 4px; 
+    background-color: #f9f9f9;
+}
+
+
+
